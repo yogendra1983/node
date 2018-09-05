@@ -1,12 +1,18 @@
-var express = require('express');
-var app = express();
-var path = require('path');
+const http = require('http');
+const app = require('./app');
 
-app.use(express.static(path.join(__dirname, 'public')));
+const port = process.env.PORT || 3000;
 
-app.listen(3000, function(){
-    console.log("Test github project now at port yogendra 3000");
-});
+const server = http.createServer(app);
+
+server.listen(port);
+console.log("Server running at http://localhost:%d", port);
 
 
-// run project // node server.js
+// function onRequest(request, response) {
+//     response.writeHead(200, {'Content-Type': 'text/plain'});
+//     response.write('Hello Yogendra Singh');
+//     response.end();
+// }
+// http.createServer(onRequest).listen(4200);
+
